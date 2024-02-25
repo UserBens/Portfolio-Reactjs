@@ -20,7 +20,7 @@ const Projects = ({ openModal, setOpenModal }) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         setProjects(newData);
-        console.log(newData);
+        // console.log(newData);
       })
 
   }
