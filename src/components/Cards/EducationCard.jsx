@@ -127,19 +127,20 @@ const Grade = styled.div`
 `
 
 const EducationCard = ({ education }) => {
+    // console.log(education);
     return (
         <Card>
             <Top>
-                {/* <Image src={education.img} /> */}
+                <Image src={education.image_url} />
                 <Body>
-                    <Name>{education.school}</Name>
+                    <Name>{education.nama}</Name>
                     <Degree>{education.degree}</Degree>
-                    <Date>{education.date}</Date>
+                    <Date>{education.tahun_masuk} - {education.tahun_keluar}</Date>
                 </Body>
             </Top>
-            <Grade><b>Grade: </b>{education.grade}</Grade>
+            <Grade><b>Grade: </b>{education.ipk}</Grade>
             <Description>
-                <Span>{education.desc}</Span>
+                <Span>{education.description}</Span>
             </Description>
         </Card>
     )

@@ -183,7 +183,8 @@ const Button = styled.a`
 
 
 const index = ({ openModal, setOpenModal }) => {
-    const project = openModal?.project;
+    const project = openModal?.projects;
+    console.log(project);
     return (
         <Modal open={true} onClose={() => setOpenModal({ state: false, project: null })}>
             <Container>
@@ -197,16 +198,14 @@ const index = ({ openModal, setOpenModal }) => {
                         }}
                         onClick={() => setOpenModal({ state: false, project: null })}
                     />
-                    {/* <Image src={project?.image} /> */}
-                    <Title>{project?.title}</Title>
-                    <Date>{project.date}</Date>
+                    <Image src={project?.image_url} />
+                    <Title>{project?.nama}</Title>
+                    {/* <Date>{project.date}</Date> */}
                     <Tags>
-                        {project?.tags.map((tag) => (
-                            <Tag>{tag}</Tag>
-                        ))}
+                        <Tag>{project.tags}</Tag>
                     </Tags>
                     <Desc>{project?.description}</Desc>
-                    {project.member && (
+                    {/* {project.member && (
                         <>
                             <Label>Members</Label>
                             <Members>
@@ -224,7 +223,7 @@ const index = ({ openModal, setOpenModal }) => {
                                 ))}
                             </Members>
                         </>
-                    )}
+                    )} */}
                     <ButtonGroup>
                         <Button dull href={project?.github} target='new'>View Code</Button>
                         {/* <Button href={project?.webapp} target='new'>View Live App</Button> */}

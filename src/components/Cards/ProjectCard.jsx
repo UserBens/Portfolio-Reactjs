@@ -121,25 +121,26 @@ const Avatar = styled.img`
     border: 3px solid ${({ theme }) => theme.card};
 `
 
-const ProjectCards = ({project,setOpenModal}) => {
+const ProjectCards = ({projects,setOpenModal}) => {
+    console.log(projects)
     return (
-        <Card onClick={() => setOpenModal({state: true, project: project})}>
-            {/* <Image src={project.image}/> */}
+        <Card onClick={() => setOpenModal({state: true, projects: projects})}>
+            <Image src={projects.image_url}/>
             <Tags>
-                {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
-                ))}
+                {/* {projects.tags?.map((tags, index) => (
+                    ))} */}
+                    <Tag>{projects.tags}</Tag>
             </Tags>
             <Details>
-                <Title>{project.title}</Title>
-                <Date>{project.date}</Date>
-                <Description>{project.description}</Description>
+                <Title>{projects.nama}</Title>
+                {/* <Date>{projects.date}</Date> */}
+                <Description>{projects.description}</Description>
             </Details>
-            <Members>
-                {project.member?.map((member) => (
+            {/* <Members>
+                {projects.member?.map((member) => (
                     <Avatar src={member.img}/>
                 ))}
-            </Members>
+            </Members> */}
             {/* <Button>View Project</Button> */}
         </Card>
     )

@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Container, Wrapper, Title, Desc, CardContainer, ToggleButtonGroup, ToggleButton, Divider } from './ProjectsStyle'
 import ProjectCard from '../Cards/ProjectCard'
 import { projects } from '../../data/constants'
+import { db } from '../../firebase'
+import { collection, getDocs } from 'firebase/firestore'
+import ProjectCards from '../Cards/ProjectCard'
 
 
-const Projects = ({openModal,setOpenModal}) => {
+const Projects = ({ openModal, setOpenModal }) => {
+
+  const [projects, setProjects] = useState([]);
+
+
+  const fetchPost = async () => {
+
+    await getDocs(collection(db, "projects"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        setProjects(newData);
+        console.log(newData);
+      })
+
+  }
+
+  useEffect(() => {
+    fetchPost();
+  }, [])
+
   const [toggle, setToggle] = useState('all');
   return (
     <Container id="projects">
@@ -41,13 +64,13 @@ const Projects = ({openModal,setOpenModal}) => {
         </ToggleButtonGroup>
         <CardContainer>
           {toggle === 'all' && projects
-            .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+            .map((projects) => (
+              <ProjectCards projects={projects} openModal={openModal} setOpenModal={setOpenModal} />
             ))}
           {projects
             .filter((item) => item.category == toggle)
-            .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+            .map((projects) => (
+              <ProjectCards projects={projects} openModal={openModal} setOpenModal={setOpenModal} />
             ))}
         </CardContainer>
       </Wrapper>

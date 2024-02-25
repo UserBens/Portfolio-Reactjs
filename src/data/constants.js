@@ -215,17 +215,17 @@ export const Bio = {
     },
   ];
   
-  export const education = [
-    {
-      id: 0,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
-      school: "Universitas 17 Agustus 1945 Surabaya",
-      date: "Oct 2020 - Mar 2024",
-      grade: "3.50",
-      desc: "I am a computer graduate from the informatics engineering study program at the University of 17 August 1945 Surabaya with a graduation record of 3.5 years. During my studies I studied web development and UI/UX design",
-      degree: "Bachelor of Computer Science, Informatics Engineering",
-    },
-  ];
+  // export const education = [
+  //   {
+  //     id: 0,
+  //     img: "/images/logo-untag.png",
+  //     school: "Universitas 17 Agustus 1945 Surabaya",
+  //     date: "Oct 2020 - Mar 2024",
+  //     grade: "3.50",
+  //     desc: "I am a computer graduate from the informatics engineering study program at the University of 17 August 1945 Surabaya with a graduation record of 3.5 years. During my studies I studied web development and UI/UX design",
+  //     degree: "Bachelor of Computer Science, Informatics Engineering",
+  //   },
+  // ];
   
   export const projects = [
     {
@@ -324,7 +324,7 @@ export const Bio = {
       tags: ["Laravel", "Postman", "MySQL"],
       category: "web app",
       github: "https://github.com/UserBens/belajar-laravel-api",
-      webapp: "https://rishav-react-todo.netlify.app/",
+      // webapp: "https://rishav-react-todo.netlify.app/",
     },
     // {
     //   id: 6,

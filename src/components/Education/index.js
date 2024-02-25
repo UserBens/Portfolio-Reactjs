@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -8,8 +8,30 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import { education, experiences } from '../../data/constants';
 import EducationCard from '../Cards/EducationCard';
 import { Container, Wrapper, Title, Desc, TimelineSection } from './EducationStyle'
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '../../firebase';
 
 const Education = () => {
+
+    const [education, setEducation] = useState([]);
+
+    
+    const fetchPost = async () => {
+
+        await getDocs(collection(db, "universitas"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                setEducation(newData);
+            })
+
+    }
+
+    useEffect(() => {
+        fetchPost();
+    }, [])
+
+
     return (
         <Container id="education">
             <Wrapper>
@@ -19,14 +41,14 @@ const Education = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {education.map((education,index) => (
+                        {education.map((education, index) => (
                             <TimelineItem >
                                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <EducationCard education={education}/>
+                                    <EducationCard education={education} />
                                 </TimelineContent>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length  && <TimelineConnector style={{ background: '#854CE6' }} />}
+                                    {index !== experiences.length && <TimelineConnector style={{ background: '#854CE6' }} />}
                                 </TimelineSeparator>
                             </TimelineItem>
                         ))}
