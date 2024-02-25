@@ -141,20 +141,20 @@ const Skill = styled.div`
     }
 `
 
-const ExperienceCard = ({ experience }) => {
+const ExperienceCard = ({ experience, setOpenModal }) => {    
     return (
-        <Card>
+        <Card onClick={() => setOpenModal({state: true, experience: experience})}>
             <Top>
-                <Image src={experience.img} />
+                {/* <Image src={experience.image_url} /> */}
                 <Body>
-                    <Role>{experience.role}</Role>
+                    <Role>{experience.nama}</Role>
                     <Company>{experience.company}</Company>
                     <Date>{experience.date}</Date>
                 </Body>
             </Top>
             <Description>
-                {experience?.desc &&
-                    <Span>{experience?.desc}</Span>
+                {experience?.description &&
+                    <Span>{experience?.description}</Span>
 
                 }
                 {experience?.skills &&
@@ -163,19 +163,17 @@ const ExperienceCard = ({ experience }) => {
                         <Skills>
                             <b>Skills:</b>
                             <ItemWrapper>
-                                {experience?.skills?.map((skill, index) => (
-                                    <Skill>• {skill}</Skill>
-                                ))}
+                                {experience.skills}
                             </ItemWrapper>
                         </Skills>
                     </>
                 }
             </Description>
-            {/* {experience.doc &&
-                <a href={experience.doc} target="new">
-                    <Document src={experience.doc} />
+            {experience.description &&
+                <a href={experience.description} target="_blank" rel="noopener noreferrer">
+                    <Document src={experience.image_url} />
                 </a>
-            } */}
+            }
         </Card>
     )
 }

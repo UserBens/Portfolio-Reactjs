@@ -22,7 +22,6 @@ const Projects = ({ openModal, setOpenModal }) => {
         setProjects(newData);
         // console.log(newData);
       })
-
   }
 
   useEffect(() => {

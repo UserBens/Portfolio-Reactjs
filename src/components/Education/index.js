@@ -14,7 +14,6 @@ import { db } from '../../firebase';
 const Education = () => {
 
     const [education, setEducation] = useState([]);
-
     
     const fetchPost = async () => {
 
@@ -30,7 +29,6 @@ const Education = () => {
     useEffect(() => {
         fetchPost();
     }, [])
-
 
     return (
         <Container id="education">
